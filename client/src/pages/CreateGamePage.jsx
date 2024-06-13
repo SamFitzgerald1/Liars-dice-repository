@@ -1,3 +1,4 @@
+import { Chat } from "../components/Chat";
 import { InviteUrl } from "../components/InviteUrl";
 import { Settings } from "../components/Settings";
 
@@ -7,6 +8,7 @@ export function CreateGamePage() {
         <h1>Hello</h1>
         <InviteUrl />
         <Settings />
+        <Chat />
       </>
     )
 }
