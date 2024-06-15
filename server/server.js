@@ -5,6 +5,7 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const cors = require('cors');
 const chatSocket = require('./socketListeners/chatListeners');
+const room = require('./socketListeners/roomListeners');
 
 app.use(cors);
 
@@ -19,6 +20,7 @@ io.on('connection', (socket) => {
     console.log('a user connected');
 
     chatSocket(socket);
+    room(socket);
 });
 
 server.listen(3000, () => {

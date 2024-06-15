@@ -6,7 +6,7 @@ export function InviteUrl() {
     
     return (
       <>
-        <input ref={inputRef} value="GameIdURL" type="text" readOnly />
+        <input ref={inputRef} value={window.location.href} type="text" readOnly />
         <button onClick={() => navigator.clipboard.writeText(inputRef.current.value)}>Copy</button>
       </>
     )
