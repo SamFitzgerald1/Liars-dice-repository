@@ -1,3 +1,10 @@
+import { Players } from "../components/Players";
+
 export function GamePage() {
-    return <h1>Game</h1>
+    return (
+      <>
+        <Players />
+        
+      </>
+    )
 }

@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Chat } from "../components/Chat";
 import { InviteUrl } from "../components/InviteUrl";
 import { Settings } from "../components/Settings";
-import { useEffect } from "react";
+import { Players } from "../components/Players";
+import { StartGameForm } from "../components/StartGameForm";
 import socket from "../socketConfig";
 
 export function CreateGamePage() {
@@ -14,10 +16,11 @@ export function CreateGamePage() {
   
   return (
     <>
-      <h1>Hello</h1>
       <InviteUrl />
       <Settings />
-      <Chat id={id}/>
+      <Chat id={id} />
+      <Players id={id} />
+      <StartGameForm />
     </>
   )
 }
