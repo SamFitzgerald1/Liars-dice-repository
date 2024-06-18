@@ -11,6 +11,10 @@ export function CreateGamePage() {
   const {id} = useParams();
 
   useEffect(() => {
+    fetch(`http://localhost:3000/creategame/${id}`);
+  }, []);
+  
+  useEffect(() => {
     socket.emit("joinRoom", id)
   }, []);
   
