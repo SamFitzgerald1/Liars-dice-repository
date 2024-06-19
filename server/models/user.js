@@ -11,6 +11,12 @@ const userSchema = new mongoose.Schema({
         type: [Number],
         required: true,
         default: 0
+    },
+
+    isReady: {
+        type: boolean,
+        required: true,
+        default: false
     }
 });
 
