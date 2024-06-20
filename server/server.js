@@ -11,14 +11,14 @@ const createRouter = require('./routes/create');
 
 app.use('/creategame', createRouter);
 
-app.use(cors);
+app.use(cors());
 
 const server = http.createServer(app);
 
 const io = new Server(server, {
     cors: {
         origin: 'http://localhost:5173',
-        methods: ['POST', 'PUT']
+        Methods: ['POST', 'PUT']
     }
 });
 

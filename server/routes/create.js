@@ -14,18 +14,18 @@ router.post('/:id', async (req, res) => {
     }
 });
 
-// router.put('/:id/dicenum', async (req, res) => {
-//     console.log('fuck you cors');
+router.put('/:id/dicenum', async (req, res) => {
+    console.log('fuck you cors');
     
-//     // try {
-//     //     const room = await Room.find({roomId: req.params.id});
-//     //     room.diceNum = req.body.diceNum;
-//     //     await room.save();
-//     //     console.log(room);
-//     // } catch(error) {
-//     //     console.error(error);
-//     // }
-// });
+    // try {
+    //     const room = await Room.find({roomId: req.params.id});
+    //     room.diceNum = req.body.diceNum;
+    //     await room.save();
+    //     console.log(room);
+    // } catch(error) {
+    //     console.error(error);
+    // }
+});
 
 // router.put('/:id/turnspeed', async (req, res) => {
 //     try {

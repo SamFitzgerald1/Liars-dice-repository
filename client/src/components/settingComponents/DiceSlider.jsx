@@ -10,14 +10,14 @@ export function DiceSlider() {
 
     const {id} = useParams();
 
-    // useEffect(() => {      
-    //   fetch(`http://localhost:3000/creategame/${id}/dicenum`, {
-    //     method: 'PUT',
-    //     body: {
-    //       diceNum: numOfDice
-    //     }
-    //   });
-    // }, [numOfDice]);
+    useEffect(() => {      
+      fetch(`http://localhost:3000/creategame/${id}/dicenum`, {
+        method: 'PUT',
+        // body: {
+        //   diceNum: numOfDice
+        // }
+      });
+    }, [numOfDice]);
     
     return (
       <>
