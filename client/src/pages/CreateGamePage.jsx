@@ -25,9 +25,12 @@ export function CreateGamePage() {
   useEffect(() => {      
     fetch(`http://localhost:3000/creategame/${id}/dicenum`, {
       method: 'PUT',
-      body: {
+      headers: {
+        'content-type': 'application/json'
+      },
+      body: JSON.stringify({
         diceNum: numOfDice
-      }
+      })
     });
   }, [numOfDice]);
   
@@ -38,6 +41,9 @@ export function CreateGamePage() {
       <Chat id={id} />
       <Players id={id} />
       <StartGameForm />
+      <button onClick={() => fetch(`http://localhost:3000/creategame/${id}/delete`, {method: 'DELETE'})}>
+        Delete
+      </button>
     </>
   )
 }

@@ -3,6 +3,7 @@ const app = express();
 const http = require('http');
 const { Server } = require("socket.io");
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const createRouter = require('./routes/create');
 
@@ -11,8 +12,10 @@ const room = require('./socketListeners/roomListeners');
 
 app.use(cors({
     origin: 'http://localhost:5173',
-    methods: ['POST', 'PUT']
+    methods: ['POST', 'PUT', 'DELETE']
 }));
+
+app.use(bodyParser.json());
 
 app.use('/creategame', createRouter);
 
