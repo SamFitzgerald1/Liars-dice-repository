@@ -2,21 +2,21 @@ const express = require('express');
 const router = express.Router();
 const Room = require('../models/room');
 
-router.post('/:id', async (req, res) => {    
-    const room = new Room({
-      roomId: req.params.id,
-    });
-    try {
-        await room.save();
-        console.log(room);
-    } catch (error) {
-        console.error(error);
-    }
+router.post('/:id', async (req, res) => {
+    console.log('1')
+    // const room = new Room({
+    //   roomId: req.params.id,
+    // });
+    // try {
+    //     await room.save();
+    //     console.log(room);
+    // } catch (error) {
+    //     console.error(error);
+    // }
 });
 
 router.put('/:id/dicenum', async (req, res) => {
-    console.log('fuck you cors');
-    
+    console.log('2') 
     // try {
     //     const room = await Room.find({roomId: req.params.id});
     //     room.diceNum = req.body.diceNum;

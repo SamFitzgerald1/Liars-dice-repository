@@ -1,25 +1,20 @@
 import { useState, useRef, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-export function DiceSlider() {
+export function useDiceSlider() {
 
-    const defaultNumOfDice = 5;
+  const defaultNumOfDice = 5;
 
-    const diceNumInput = useRef(defaultNumOfDice);
-    const [numOfDice, setNumOfDice] = useState(defaultNumOfDice);
+  const diceNumInput = useRef(defaultNumOfDice);
+  const [numOfDice, setNumOfDice] = useState(defaultNumOfDice);
 
-    const {id} = useParams();
-
-    useEffect(() => {      
-      fetch(`http://localhost:3000/creategame/${id}/dicenum`, {
-        method: 'PUT',
-        // body: {
-        //   diceNum: numOfDice
-        // }
-      });
-    }, [numOfDice]);
+  const {id} = useParams();
+  
+  return {
     
-    return (
+    numOfDice,
+    
+    renderDiceSlider: (
       <>
         <label htmlFor="diceNum">{numOfDice}</label>
         <input
@@ -33,4 +28,5 @@ export function DiceSlider() {
         />
       </>
     )
+  }
 }
