@@ -12,7 +12,7 @@ const roomSchema = new mongoose.Schema({
         default: []
     },
 
-    diceNum: {
+    numOfDice: {
         type: Number,
         required: true,
         default: 0

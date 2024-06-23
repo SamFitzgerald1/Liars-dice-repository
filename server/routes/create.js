@@ -3,8 +3,16 @@ const router = express.Router();
 const Room = require('../models/room');
 
 router.post('/:id', async (req, res) => {
+
+    // if(Room.exists({roomId: req.params.id})) {
+    //     console.log('true');
+    //     const room = Room.findOneAndUpdate({roomId: req.params.id}, {$push: {users: req.body.username}});
+    //     return;
+    // }
+    
     const room = new Room({
       roomId: req.params.id,
+      //users: [req.body.usename]
     });
     try {
         await room.save();
@@ -15,27 +23,17 @@ router.post('/:id', async (req, res) => {
     }
 });
 
-router.put('/:id/dicenum', async (req, res) => {
+router.put('/:id/edit', async (req, res) => {
     try {
         const room = await Room.findOne({roomId: req.params.id});
-        room.diceNum = req.body.diceNum;
+        room.numOfDice = req.body.numOfDice;
+        room.turnSpeed = req.body.turnSpeed;
         await room.save();
-        console.log('put')
         console.log(room);
-    } catch(error) {
+    } catch (error) {
         console.error(error);
     }
 });
-
-// router.put('/:id/turnspeed', async (req, res) => {
-//     try {
-//         const room = await Room.findOne({roomId: req.params.id});
-//         room.turnSpeed = req.body.turnSpeed;
-//         await room.save();
-//     } catch(error) {
-//         console.error(error);
-//     }
-// });
 
 router.delete('/:id/delete', async (req, res) => {
     try {

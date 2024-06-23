@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Chat } from "../components/Chat";
 import { InviteUrl } from "../components/InviteUrl";
@@ -10,30 +10,43 @@ import socket from "../socketConfig";
 export function CreateGamePage() {
   const {id} = useParams();
 
-  const {renderSettings, numOfDice} = useSettings();
+  const {renderSettings, numOfDice, turnSpeed} = useSettings();
+
+  // let username;
 
   useEffect(() => {
-    socket.emit("joinRoom", id)
+    socket.emit("joinRoom", id);
   }, []);
+
+  // useEffect(() => {
+  //   username = prompt('Enter your name');
+  // }, []);
   
   useEffect(() => {
     fetch(`http://localhost:3000/creategame/${id}`, {
-      method: 'POST'
+      method: 'POST',
+      // headers: {
+      //   'content-type': 'application/json'
+      // },
+      // body: JSON.stringify({
+      //   username
+      // })
     });
   }, []);
   
   useEffect(() => {      
-    fetch(`http://localhost:3000/creategame/${id}/dicenum`, {
+    fetch(`http://localhost:3000/creategame/${id}/edit`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
-        diceNum: numOfDice
+        numOfDice: numOfDice,
+        turnSpeed: turnSpeed
       })
     });
-  }, [numOfDice]);
-  
+  }, [numOfDice, turnSpeed]);
+
   return (
     <>
       <InviteUrl />

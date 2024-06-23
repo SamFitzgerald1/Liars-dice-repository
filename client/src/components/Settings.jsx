@@ -1,18 +1,20 @@
-import { useDiceSlider } from "./settingComponents/DiceSlider"
-import { TurnSpeedInput } from "./settingComponents/TurnSpeedInput"
+import { useDiceSlider } from "./settingComponents/useDiceSlider"
+import { useTurnSpeedInput } from "./settingComponents/useTurnSpeedInput"
 
 export function useSettings() {
 
   const {renderDiceSlider, numOfDice} = useDiceSlider();
+  const {renderTurnSpeedInput, turnSpeed} = useTurnSpeedInput();
     
   return {
 
     numOfDice,
+    turnSpeed,
 
     renderSettings: (
       <>
         {renderDiceSlider}
-        <TurnSpeedInput />
+        {renderTurnSpeedInput}
       </>
     )
   }
