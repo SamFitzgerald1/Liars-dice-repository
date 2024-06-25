@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { nanoid } from 'nanoid';
-import socket from "../socketConfig";
 
 export function HomePage() {
   const [username, setUsername] = useState('');
+
+  const ID = nanoid();
   
   return (
     <>
@@ -14,7 +15,12 @@ export function HomePage() {
         value={username}
         onChange={e => setUsername(e.target.value)}
       />
-      <Link to={`/createGame/${nanoid()}`} >Create Game</Link>
+      <Link
+        to={`/createGame/${ID}`}
+        onClick={() => fetch(`http://localhost:3000/room/${ID}`, {method: 'POST'})}
+      >
+        Create Game
+      </Link>
       <a href="">Join Game</a>
     </>
   )

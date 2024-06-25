@@ -3,18 +3,22 @@ const mongoose = require('mongoose');
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true,
-        default: "Player"
+        required: true
+    },
+
+    roomId: {
+        type: String,
+        required: true
     },
 
     dice: {
         type: [Number],
         required: true,
-        default: 0
+        default: []
     },
 
     isReady: {
-        type: boolean,
+        type: Boolean,
         required: true,
         default: false
     }

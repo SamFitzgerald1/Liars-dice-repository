@@ -5,7 +5,7 @@ const { Server } = require("socket.io");
 const cors = require('cors');
 const bodyParser = require('body-parser');
 
-const createRouter = require('./routes/create');
+const roomRouter = require('./routes/room');
 
 const chatSocket = require('./socketListeners/chatListeners');
 const room = require('./socketListeners/roomListeners');
@@ -17,7 +17,7 @@ app.use(cors({
 
 app.use(bodyParser.json());
 
-app.use('/creategame', createRouter);
+app.use('/room', roomRouter);
 
 const server = http.createServer(app);
 

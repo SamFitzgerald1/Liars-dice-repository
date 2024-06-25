@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { Chat } from "../components/Chat";
 import { InviteUrl } from "../components/InviteUrl";
@@ -12,40 +12,29 @@ export function CreateGamePage() {
 
   const {renderSettings, numOfDice, turnSpeed} = useSettings();
 
-  // let username;
+  let username;
+
+  useEffect(() => {
+    username = prompt('Enter your name');
+  }, []);
 
   useEffect(() => {
     socket.emit("joinRoom", id);
   }, []);
-
-  // useEffect(() => {
-  //   username = prompt('Enter your name');
-  // }, []);
-  
-  useEffect(() => {
-    fetch(`http://localhost:3000/creategame/${id}`, {
-      method: 'POST',
-      // headers: {
-      //   'content-type': 'application/json'
-      // },
-      // body: JSON.stringify({
-      //   username
-      // })
-    });
-  }, []);
   
   useEffect(() => {      
-    fetch(`http://localhost:3000/creategame/${id}/edit`, {
+    fetch(`http://localhost:3000/room/${id}/edit`, {
       method: 'PUT',
       headers: {
         'content-type': 'application/json'
       },
       body: JSON.stringify({
         numOfDice: numOfDice,
-        turnSpeed: turnSpeed
+        turnSpeed: turnSpeed,
+        username: username
       })
     });
-  }, [numOfDice, turnSpeed]);
+  }, [numOfDice, turnSpeed, username]);
 
   return (
     <>
@@ -54,7 +43,7 @@ export function CreateGamePage() {
       <Chat id={id} />
       <Players id={id} />
       <StartGameForm />
-      <button onClick={() => fetch(`http://localhost:3000/creategame/${id}/delete`, {method: 'DELETE'})}>
+      <button onClick={() => fetch(`http://localhost:3000/room/${id}/delete`, {method: 'DELETE'})}>
         Delete
       </button>
     </>
