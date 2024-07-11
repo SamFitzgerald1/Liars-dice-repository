@@ -22,8 +22,7 @@ router.put('/:id/edit', async (req, res) => {
             $set: {
                 numOfDice: req.body.numOfDice,
                 turnSpeed: req.body.turnSpeed
-            },
-            $push: {users: new User({name: req.body.name, roomId: req.params.id})}
+            }
         });
         const room = await Room.findOne({roomId: req.params.id})
         console.log(room);
