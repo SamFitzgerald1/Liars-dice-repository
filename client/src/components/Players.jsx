@@ -1,7 +1,7 @@
-export function Players(props) {
+export function Players() {
+  
   return (
     <>
-      <div>WIP</div>
     </>
   )
 }

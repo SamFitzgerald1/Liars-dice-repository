@@ -15,6 +15,8 @@ export function HomePage() {
         Create Game
       </Link>
       <a href="">Join Game</a>
+
+      <button onClick={() => fetch('http://localhost:3000/user/destroy', {method: 'POST'})}>DESTROY</button>
     </>
   )
 }

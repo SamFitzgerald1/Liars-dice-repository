@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { Chat } from "../components/Chat";
 import { InviteUrl } from "../components/InviteUrl";
@@ -11,20 +11,12 @@ export function LobbyPage() {
   const {id} = useParams();
 
   useEffect(() => {
-      socket.emit("joinRoom", id);
-    }, []);
+    socket.emit("joinRoom", id);
+  }, []);
 
   useEffect(() => {
-    let username = prompt('Enter your name');
-
     fetch(`http://localhost:3000/user/${id}/new`, {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json'
-      },
-      body: JSON.stringify({
-        username
-      })
+      method: 'POST'
     })
   }, []);
   
@@ -32,7 +24,7 @@ export function LobbyPage() {
     <>
       <InviteUrl />
       <Chat id={id} />
-      <Players id={id} />
+      <Players />
       <StartGameForm id={id}/>
     </>
   );
