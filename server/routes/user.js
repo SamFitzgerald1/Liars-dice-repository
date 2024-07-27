@@ -5,7 +5,6 @@ const Room = require('../models/room');
 
 router.post(':id/new', async (req, res) => {
     const user = new User({
-        name: req.body.name,
         roomId: req.params.id
     });
     try {
@@ -15,3 +14,8 @@ router.post(':id/new', async (req, res) => {
         console.error(error);
     }
 });
+
+router.post('destroy', async (req, res) => {
+    await User.dropDatabase();
+    await Room.dropDatabase();
+})
